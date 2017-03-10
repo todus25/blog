@@ -1,0 +1,44 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>home</title>
+<style>
+</style>
+</head>
+<?php
+     if(isset($_POST['a']))
+     {   
+		 $title=$_POST['a'];}
+ 
+else
+	die("li");
+     include_once('connection.php');
+$query="SELECT * FROM article WHERE title='$title'";
+mysql_query($query) or die('j');
+$result=mysql_query($query);
+$rows=mysql_fetch_array($result);
+
+?>
+
+
+
+
+<body>
+ <h1><?php  echo $rows['title'] ?></h1>
+ <img src="<?php  echo $rows['image'] ?>"/>
+ <div><?php echo $rows['description'] ?><div/>
+ <p><?php echo $rows['dt'] ?></p>
+ <p><?php echo $rows['email'] ?></p>
+ 
+	
+
+
+
+
+</body>
+</html>
+
